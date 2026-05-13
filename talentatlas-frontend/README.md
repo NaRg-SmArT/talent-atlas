@@ -1,60 +1,96 @@
-# TalentAtlasFrontend
+# TalentAtlas Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.8.
+This is the Angular frontend for TalentAtlas, a full-stack job application tracking application built to help users organize applications, manage skills, and analyze job descriptions for keyword relevance.
 
-## Development server
+The frontend provides the user-facing experience for authentication, application management, skill tracking, dashboard navigation, and keyword analysis. It is designed to work with the TalentAtlas Spring Boot backend included in the root of this repository.
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
-```
+- User registration and login
+- Protected routes using an authentication guard
+- JWT-based request handling with an auth interceptor
+- Dashboard and app navigation
+- Job application creation, editing, and detail views
+- Skill management workflows
+- Keyword analysis for job descriptions
+- Landing page and account-related flows
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tech Stack
 
-## Code scaffolding
+- Angular 21
+- TypeScript
+- Angular Router
+- Angular Forms
+- RxJS
+- Vitest
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Project Structure
 
-```bash
-ng generate component component-name
-```
+The frontend lives in `talentatlas-frontend/`.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Key areas include:
 
-```bash
-ng generate --help
-```
+- `src/app/core/` for shared logic such as auth, guards, interceptors, environment configuration, analysis services, and skills services
+- `src/app/features/` for feature components such as dashboard, applications, application detail, login, register, skills, and keyword analysis
+- `public/` for static assets such as the keyword dictionary and favicon
 
-## Building
+## Running Locally
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+From the `talentatlas-frontend` directory, install dependencies:
 
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Start the Angular development server:
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The frontend will run at:
 
-## Additional Resources
+```text
+http://localhost:4200/
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Backend Integration
+
+This frontend is configured to communicate with the TalentAtlas backend through the API URL defined in:
+
+```text
+src/app/core/environment.ts
+```
+
+The current local API base URL is:
+
+```text
+http://localhost:8080/api
+```
+
+For full functionality, start the Spring Boot backend from the repository root before using the frontend.
+
+## Build
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+Build artifacts are generated in the `dist/` directory.
+
+## Testing
+
+To run unit tests:
+
+```bash
+npm test
+```
+
+This project uses Angular’s unit test builder with Vitest.
+
+## Notes
+
+
 
