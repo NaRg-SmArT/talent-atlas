@@ -1,0 +1,97 @@
+<app-nav></app-nav>
+
+<main class="application-detail-page">
+  <header class="application-detail-header">
+    <div>
+      <h1>Application Details</h1>
+      <p class="application-detail-subtitle">
+        Review the saved information for this job application.
+      </p>
+    </div>
+  </header>
+
+  <section class="application-detail-state">
+    <p *ngIf="loading">Loading application details...</p>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </section>
+
+  <section *ngIf="!loading && application" class="detail-card">
+    <section
+      *ngIf="application.needsAttention"
+      class="attention-banner"
+      [ngClass]="{
+        'attention-low': application.attentionLevel === 'LOW',
+        'attention-medium': application.attentionLevel === 'MEDIUM',
+        'attention-high': application.attentionLevel === 'HIGH'
+      }"
+    >
+      <p class="attention-label">
+        Attention needed
+        <span class="attention-pill">{{ application.attentionLevel }}</span>
+      </p>
+      <p class="attention-message">{{ application.attentionMessage }}</p>
+      <p class="attention-meta">
+        Days in current status: {{ application.daysInCurrentStatus }}
+      </p>
+    </section>
+
+    <div class="detail-row">
+      <span class="detail-label">Company</span>
+      <span>{{ application.companyName }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Position</span>
+      <span>{{ application.positionTitle }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Status</span>
+      <span>{{ application.status }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Applied At</span>
+      <span>{{ application.appliedAt || 'Not provided' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Job Posting URL</span>
+      <span>{{ application.jobPostingUrl || 'Not provided' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Primary Contact Name</span>
+      <span>{{ application.primaryContactName || 'Not provided' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Primary Contact Phone</span>
+      <span>{{ application.primaryContactPhone || 'Not provided' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Primary Contact Email</span>
+      <span>{{ application.primaryContactEmail || 'Not provided' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Notes</span>
+      <span>{{ application.notes || 'None' }}</span>
+    </div>
+
+    <div class="detail-actions">
+      <button type="button" class="secondary-button" routerLink="/applications">
+        Back to Applications
+      </button>
+
+      <button
+        type="button"
+        class="primary-button"
+        [routerLink]="['/applications', application.id, 'edit']"
+      >
+        Edit
+      </button>
+    </div>
+  </section>
+</main>

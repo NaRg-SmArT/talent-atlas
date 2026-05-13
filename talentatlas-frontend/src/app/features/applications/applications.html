@@ -1,0 +1,106 @@
+<app-nav></app-nav>
+
+<main class="applications-page">
+  <header class="applications-header">
+    <div>
+      <h1>Applications</h1>
+      <p class="applications-subtitle">
+        Review your job applications and quickly jump into details.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="primary-button"
+      routerLink="/applications/new"
+    >
+      Create New Application
+    </button>
+  </header>
+
+  <section *ngIf="loading" class="applications-state">
+    <p>Loading applications...</p>
+  </section>
+
+  <section
+    *ngIf="!loading && errorMessage"
+    class="applications-state error"
+  >
+    <p>{{ errorMessage }}</p>
+  </section>
+
+  <section
+    *ngIf="!loading && !errorMessage && applications.length === 0"
+    class="applications-state"
+  >
+    <p>No applications found.</p>
+  </section>
+
+  <section
+    *ngIf="!loading && !errorMessage && applications.length > 0"
+    aria-label="Applications list"
+  >
+    <ul class="application-list">
+      <li
+        *ngFor="let application of applications"
+        class="application-card"
+      >
+        <div class="application-main">
+          <div
+            *ngIf="application.needsAttention"
+            class="application-attention-badge"
+            [ngClass]="{
+              'badge-low': application.attentionLevel === 'LOW',
+              'badge-medium': application.attentionLevel === 'MEDIUM',
+              'badge-high': application.attentionLevel === 'HIGH'
+            }"
+          >
+            <span class="badge-dot"></span>
+            <span class="badge-text">
+              {{ application.attentionLevel }} attention
+            </span>
+            <span class="badge-meta">
+              · {{ application.daysInCurrentStatus }}
+              days in {{ application.status }}
+            </span>
+          </div>
+
+          <div class="application-content">
+            <strong>{{ application.companyName }}</strong><br />
+            Position: {{ application.positionTitle }}<br />
+            Status: {{ application.status }}<br />
+            Applied: {{ application.appliedAt || 'Not provided' }}<br />
+            Contact: {{ application.primaryContactName || 'Not provided' }}<br />
+            Notes: {{ application.notes || 'None' }}
+          </div>
+        </div>
+
+        <div class="application-actions">
+          <button
+            type="button"
+            class="secondary-button"
+            [routerLink]="['/applications', application.id]"
+          >
+            View
+          </button>
+
+          <button
+            type="button"
+            class="secondary-button"
+            [routerLink]="['/applications', application.id, 'edit']"
+          >
+            Edit
+          </button>
+
+          <button
+            type="button"
+            class="delete-button"
+            (click)="deleteApplication(application)"
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</main>

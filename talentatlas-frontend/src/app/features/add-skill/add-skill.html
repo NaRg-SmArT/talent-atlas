@@ -1,0 +1,102 @@
+<app-nav></app-nav>
+
+<main class="page">
+  <section class="page-header">
+    <h1>Add Skill</h1>
+    <p>Add a new skill with category and proficiency so it can be used in your keyword analysis.</p>
+  </section>
+
+  <section class="card">
+    <form (ngSubmit)="onSubmit()" #skillForm="ngForm" class="form" novalidate>
+      <div class="form-row">
+        <label for="name">Skill Name</label>
+        <div class="autocomplete-wrapper">
+          <input
+            id="name"
+            name="name"
+            type="text"
+            [(ngModel)]="name"
+            #nameModel="ngModel"
+            (input)="onNameInput($any($event.target).value)"
+            (blur)="onBlurName()"
+            required
+            maxlength="100"
+            autocomplete="off"
+          />
+
+          <ul class="autocomplete-list" *ngIf="showSuggestions">
+            <li
+              *ngFor="let entry of suggestions"
+              (mousedown)="selectSuggestion(entry)"
+            >
+              <span class="autocomplete-name">{{ entry.name }}</span>
+              <span class="autocomplete-category">{{ entry.category }}</span>
+            </li>
+          </ul>
+        </div>
+        <p class="status error" *ngIf="nameModel.invalid && (nameModel.dirty || nameModel.touched)">
+          <span *ngIf="nameModel.errors?.['required']">Skill name is required.</span>
+          <span *ngIf="nameModel.errors?.['maxlength']">Skill name must be 100 characters or fewer.</span>
+        </p>
+        <p class="status error" *ngIf="fieldErrors['name']">{{ fieldErrors['name'] }}</p>
+      </div>
+
+      <div class="form-row">
+        <label for="category">Category</label>
+        <select
+          id="category"
+          name="category"
+          [(ngModel)]="category"
+          #categoryModel="ngModel"
+          required
+        >
+          <option value="" disabled>Select a category</option>
+          <option value="Hard Skill">Hard Skill</option>
+          <option value="Soft Skill">Soft Skill</option>
+        </select>
+        <p class="status error" *ngIf="categoryModel.invalid && (categoryModel.dirty || categoryModel.touched)">
+          <span *ngIf="categoryModel.errors?.['required']">Category is required.</span>
+        </p>
+        <p class="status error" *ngIf="fieldErrors['category']">{{ fieldErrors['category'] }}</p>
+      </div>
+
+      <div class="form-row">
+        <label for="proficiency">Proficiency</label>
+        <select
+          id="proficiency"
+          name="proficiency"
+          [(ngModel)]="proficiency"
+          #proficiencyModel="ngModel"
+          required
+        >
+          <option [ngValue]="1">1 - Beginner</option>
+          <option [ngValue]="2">2 - Basic</option>
+          <option [ngValue]="3">3 - Intermediate</option>
+          <option [ngValue]="4">4 - Advanced</option>
+          <option [ngValue]="5">5 - Expert</option>
+        </select>
+        <p class="status error" *ngIf="proficiencyModel.invalid && (proficiencyModel.dirty || proficiencyModel.touched)">
+          <span *ngIf="proficiencyModel.errors?.['required']">Proficiency is required.</span>
+        </p>
+        <p class="status error" *ngIf="fieldErrors['proficiency']">{{ fieldErrors['proficiency'] }}</p>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="skillForm.invalid || saving">
+          {{ saving ? 'Saving...' : 'Save Skill' }}
+        </button>
+
+        <a routerLink="/skills" class="link-button">
+          Cancel
+        </a>
+      </div>
+
+      <p class="status success" *ngIf="successMessage">
+        {{ successMessage }}
+      </p>
+      <p class="status error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </p>
+    </form>
+  </section>
+</main>

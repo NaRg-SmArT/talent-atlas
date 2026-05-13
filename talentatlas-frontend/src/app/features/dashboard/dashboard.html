@@ -1,0 +1,146 @@
+<app-nav></app-nav>
+
+<main class="dashboard-page">
+  <header class="dashboard-header">
+    <div>
+      <h1>Dashboard</h1>
+      <p class="dashboard-subtitle">
+        Track your applications, skills, and pipeline summaries in one place.
+      </p>
+    </div>
+  </header>
+
+  <section *ngIf="loading" class="dashboard-state">
+    <p>Loading dashboard...</p>
+  </section>
+
+  <section *ngIf="!loading && errorMessage" class="dashboard-state error">
+    <p>{{ errorMessage }}</p>
+    <button type="button" (click)="loadDashboardData()">Retry</button>
+  </section>
+
+  <section *ngIf="!loading && !errorMessage" class="dashboard-grid">
+    <section class="dashboard-card">
+      <h2>Overview</h2>
+
+      <div class="status-grid overview-grid">
+        <a class="status-item status-link" routerLink="/applications">
+          <span class="status-label">Applications</span>
+          <span class="status-value">{{ applications.length }}</span>
+        </a>
+
+        <a class="status-item status-link" routerLink="/skills">
+          <span class="status-label">Skills</span>
+          <span class="status-value">{{ skills.length }}</span>
+        </a>
+
+        <div class="status-item">
+          <span class="status-label">Active</span>
+          <span class="status-value">{{ activeApplicationsCount }}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-card">
+      <h2>Pipeline Status</h2>
+
+      <div class="status-grid">
+        <div class="status-item">
+          <span class="status-label">Saved</span>
+          <span class="status-value">{{ savedCount }}</span>
+        </div>
+
+        <div class="status-item">
+          <span class="status-label">Applied</span>
+          <span class="status-value">{{ appliedCount }}</span>
+        </div>
+
+        <div class="status-item">
+          <span class="status-label">Screening</span>
+          <span class="status-value">{{ screeningCount }}</span>
+        </div>
+
+        <div class="status-item">
+          <span class="status-label">Interview</span>
+          <span class="status-value">{{ interviewCount }}</span>
+        </div>
+
+        <div class="status-item">
+          <span class="status-label">Offer</span>
+          <span class="status-value">{{ offerCount }}</span>
+        </div>
+
+        <div class="status-item">
+          <span class="status-label">Accepted</span>
+          <span class="status-value">{{ acceptedCount }}</span>
+        </div>
+
+        <div class="status-item">
+          <span class="status-label">Rejected</span>
+          <span class="status-value">{{ rejectedCount }}</span>
+        </div>
+
+        <div class="status-item">
+          <span class="status-label">Withdrawn</span>
+          <span class="status-value">{{ withdrawnCount }}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-card">
+      <h2>Active Applications Report</h2>
+      <p class="report-meta">
+        Report generated: {{ reportGeneratedAt | date:'short' }}
+      </p>
+
+      <ng-container *ngIf="activeApplications.length > 0; else noApplications">
+        <ul class="dashboard-list">
+          <li *ngFor="let application of activeApplications">
+            <div class="application-main">
+              <div>
+                <strong>{{ application.companyName }}</strong><br />
+                {{ application.positionTitle }}<br />
+                Status: {{ application.status }}
+                <span
+                  *ngIf="(application.daysInCurrentStatus ?? 0) > 0"
+                  class="status-age"
+                >
+                  • {{ application.daysInCurrentStatus ?? 0 }} days in this status
+                </span>
+                <br />
+              </div>
+
+              <a
+                class="inline-link"
+                [routerLink]="['/applications', application.id]"
+              >
+                View details
+              </a>
+            </div>
+
+            <div
+              *ngIf="application.needsAttention"
+              class="attention-banner"
+              [ngClass]="{
+                'attention-low': application.attentionLevel === 'LOW',
+                'attention-medium': application.attentionLevel === 'MEDIUM',
+                'attention-high': application.attentionLevel === 'HIGH'
+              }"
+            >
+              <span class="attention-label">
+                {{ (application.attentionLevel || 'none') | titlecase }} priority
+              </span>
+              <span class="attention-message">
+                {{ application.attentionMessage || '' }}
+              </span>
+            </div>
+          </li>
+        </ul>
+      </ng-container>
+
+      <ng-template #noApplications>
+        <p>No active applications.</p>
+      </ng-template>
+    </section>
+  </section>
+</main>

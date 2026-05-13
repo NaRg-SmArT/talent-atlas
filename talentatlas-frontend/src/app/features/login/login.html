@@ -1,0 +1,53 @@
+<main class="login-page">
+  <form class="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+    <section class="login-intro">
+      <h1>Login</h1>
+    </section>
+
+    <label for="email">Email</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      [(ngModel)]="email"
+      #emailModel="ngModel"
+      required
+      email
+      maxlength="150"
+    />
+    <p class="error-message" *ngIf="emailModel.invalid && (emailModel.dirty || emailModel.touched)">
+      <span *ngIf="emailModel.errors?.['required']">Email is required.</span>
+      <span *ngIf="emailModel.errors?.['email']">Enter a valid email address.</span>
+      <span *ngIf="emailModel.errors?.['maxlength']">Email must be 150 characters or fewer.</span>
+    </p>
+    <p class="error-message" *ngIf="fieldErrors['email']">{{ fieldErrors['email'] }}</p>
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      [(ngModel)]="password"
+      #passwordModel="ngModel"
+      required
+      maxlength="100"
+    />
+    <p class="error-message" *ngIf="passwordModel.invalid && (passwordModel.dirty || passwordModel.touched)">
+      <span *ngIf="passwordModel.errors?.['required']">Password is required.</span>
+      <span *ngIf="passwordModel.errors?.['maxlength']">Password must be 100 characters or fewer.</span>
+    </p>
+    <p class="error-message" *ngIf="fieldErrors['password']">{{ fieldErrors['password'] }}</p>
+
+    <button type="submit" [disabled]="loading || loginForm.invalid">
+      {{ loading ? 'Logging in...' : 'Login' }}
+    </button>
+
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+
+  <p class="auth-link">
+    Don’t have an account?
+    <a routerLink="/register">Create one here</a>.
+  </p>
+</main>
+

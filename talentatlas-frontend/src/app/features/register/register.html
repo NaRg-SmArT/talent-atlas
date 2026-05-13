@@ -1,0 +1,69 @@
+<main class="register-page">
+  <form class="register-form" (ngSubmit)="onSubmit()" #registerForm="ngForm" novalidate>
+    <h2>Create Account</h2>
+
+    <label for="fullName">Full Name</label>
+    <input
+      id="fullName"
+      name="fullName"
+      type="text"
+      [(ngModel)]="fullName"
+      #fullNameModel="ngModel"
+      required
+      maxlength="100"
+    />
+    <p class="error-message" *ngIf="fullNameModel.invalid && (fullNameModel.dirty || fullNameModel.touched)">
+      <span *ngIf="fullNameModel.errors?.['required']">Full name is required.</span>
+      <span *ngIf="fullNameModel.errors?.['maxlength']">Full name must be 100 characters or fewer.</span>
+    </p>
+    <p class="error-message" *ngIf="fieldErrors['fullName']">{{ fieldErrors['fullName'] }}</p>
+
+    <label for="email">Email</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      [(ngModel)]="email"
+      #emailModel="ngModel"
+      required
+      email
+      maxlength="150"
+    />
+    <p class="error-message" *ngIf="emailModel.invalid && (emailModel.dirty || emailModel.touched)">
+      <span *ngIf="emailModel.errors?.['required']">Email is required.</span>
+      <span *ngIf="emailModel.errors?.['email']">Enter a valid email address.</span>
+      <span *ngIf="emailModel.errors?.['maxlength']">Email must be 150 characters or fewer.</span>
+    </p>
+    <p class="error-message" *ngIf="fieldErrors['email']">{{ fieldErrors['email'] }}</p>
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      [(ngModel)]="password"
+      #passwordModel="ngModel"
+      required
+      minlength="8"
+      maxlength="100"
+    />
+    <p class="error-message" *ngIf="passwordModel.invalid && (passwordModel.dirty || passwordModel.touched)">
+      <span *ngIf="passwordModel.errors?.['required']">Password is required.</span>
+      <span *ngIf="passwordModel.errors?.['minlength']">Password must be at least 8 characters.</span>
+      <span *ngIf="passwordModel.errors?.['maxlength']">Password must be 100 characters or fewer.</span>
+    </p>
+    <p class="error-message" *ngIf="fieldErrors['password']">{{ fieldErrors['password'] }}</p>
+
+    <button type="submit" [disabled]="loading || registerForm.invalid">
+      {{ loading ? 'Registering...' : 'Register' }}
+    </button>
+
+    <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+
+  <p class="auth-link">
+    Already have an account?
+    <a routerLink="/login">Log in here</a>.
+  </p>
+</main>

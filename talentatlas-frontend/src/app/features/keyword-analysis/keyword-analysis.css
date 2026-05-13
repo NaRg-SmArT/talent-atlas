@@ -1,0 +1,146 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.keyword-analysis-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.keyword-analysis-header {
+  margin-bottom: 20px;
+}
+
+.keyword-analysis-subtitle {
+  margin: 4px 0 0;
+  line-height: 1.5;
+  color: #475569;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.messages {
+  margin-bottom: 12px;
+}
+
+.error-message {
+  color: #b00020;
+}
+
+.analysis-form,
+.result-card,
+.summary-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.analysis-form {
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+  font: inherit;
+  background-color: #ffffff;
+}
+
+.form-actions {
+  margin-top: 16px;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1976d2;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background-color: #125ea7;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.summary-grid,
+.results-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.summary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 20px;
+}
+
+.results-grid {
+  grid-template-columns: 1fr;
+}
+
+.summary-card,
+.result-card {
+  padding: 16px;
+}
+
+.summary-card p {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.keyword-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.keyword-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+  line-height: 1.6;
+}
+
+.keyword-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .results-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

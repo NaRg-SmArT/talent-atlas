@@ -1,0 +1,64 @@
+<app-nav></app-nav>
+
+<main class="skills-page">
+  <header class="skills-header">
+    <div>
+      <h1>Skills</h1>
+      <p class="skills-subtitle">
+        Manage your skills profile and keep it updated over time.
+      </p>
+    </div>
+
+    <button type="button" class="primary-button" routerLink="/skills/new">
+      Add Skill
+    </button>
+  </header>
+
+  <section *ngIf="loading" class="skills-state">
+    <p>Loading skills...</p>
+  </section>
+
+  <section *ngIf="!loading && errorMessage" class="skills-state error">
+    <p>{{ errorMessage }}</p>
+  </section>
+
+  <section
+    *ngIf="!loading && !errorMessage && skills.length === 0"
+    class="skills-state"
+  >
+    <p>No skills found.</p>
+  </section>
+
+  <section
+    *ngIf="!loading && !errorMessage && skills.length > 0"
+    aria-label="Skills list"
+  >
+    <ul class="skill-list">
+      <li *ngFor="let skill of skills" class="skill-card">
+        <div class="skill-content">
+          <strong>{{ skill.name }}</strong><br />
+          Category: {{ skill.category }}<br />
+          Proficiency: {{ skill.proficiency }}/5
+        </div>
+
+        <div class="skill-actions">
+          <button
+            type="button"
+            class="secondary-button"
+            [routerLink]="['/skills', skill.id, 'edit']"
+          >
+            Edit
+          </button>
+
+          <button
+            type="button"
+            class="delete-button"
+            (click)="deleteSkill(skill)"
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</main>

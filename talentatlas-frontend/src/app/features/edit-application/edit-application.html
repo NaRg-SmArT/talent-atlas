@@ -1,0 +1,139 @@
+<app-nav></app-nav>
+
+<main class="edit-application-page">
+  <header class="edit-application-header">
+    <div>
+      <h1>Edit Application</h1>
+      <p class="edit-application-subtitle">
+        Update the details for this role.
+      </p>
+    </div>
+  </header>
+
+  <section class="messages">
+    <p *ngIf="loading">Loading application...</p>
+    <p *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </p>
+    <p *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </p>
+  </section>
+
+  <form
+    *ngIf="!loading"
+    #applicationForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    novalidate
+    class="edit-application-form"
+  >
+    <div class="form-row">
+      <label for="companyName">Company Name</label>
+      <input
+        id="companyName"
+        name="companyName"
+        type="text"
+        [(ngModel)]="companyName"
+        required
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="positionTitle">Position Title</label>
+      <input
+        id="positionTitle"
+        name="positionTitle"
+        type="text"
+        [(ngModel)]="positionTitle"
+        required
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="jobPostingUrl">Job Posting URL</label>
+      <input
+        id="jobPostingUrl"
+        name="jobPostingUrl"
+        type="url"
+        [(ngModel)]="jobPostingUrl"
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="primaryContactName">Primary Contact Name</label>
+      <input
+        id="primaryContactName"
+        name="primaryContactName"
+        type="text"
+        [(ngModel)]="primaryContactName"
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="primaryContactPhone">Primary Contact Phone</label>
+      <input
+        id="primaryContactPhone"
+        name="primaryContactPhone"
+        type="text"
+        [(ngModel)]="primaryContactPhone"
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="primaryContactEmail">Primary Contact Email</label>
+      <input
+        id="primaryContactEmail"
+        name="primaryContactEmail"
+        type="email"
+        [(ngModel)]="primaryContactEmail"
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="status">Status</label>
+      <select id="status" name="status" [(ngModel)]="status">
+        <option value="SAVED">SAVED</option>
+        <option value="APPLIED">APPLIED</option>
+        <option value="WITHDRAWN">WITHDRAWN</option>
+        <option value="SCREENING">SCREENING</option>
+        <option value="INTERVIEW">INTERVIEW</option>
+        <option value="OFFER">OFFER</option>
+        <option value="ACCEPTED">ACCEPTED</option>
+        <option value="REJECTED">REJECTED</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="appliedAt">Applied Date</label>
+      <input
+        id="appliedAt"
+        name="appliedAt"
+        type="date"
+        [(ngModel)]="appliedAt"
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="notes">Notes</label>
+      <textarea
+        id="notes"
+        name="notes"
+        rows="5"
+        [(ngModel)]="notes"
+      ></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        [disabled]="saving || !applicationForm.form.valid"
+      >
+        {{ saving ? 'Saving...' : 'Save Changes' }}
+      </button>
+
+      <button type="button" routerLink="/applications">
+        Cancel
+      </button>
+    </div>
+  </form>
+</main>

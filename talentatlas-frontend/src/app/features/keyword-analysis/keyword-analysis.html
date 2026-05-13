@@ -1,0 +1,83 @@
+<app-nav></app-nav>
+
+<main class="keyword-analysis-page">
+  <header class="keyword-analysis-header">
+    <div>
+      <h1>Keyword Gap Analysis</h1>
+      <p class="keyword-analysis-subtitle">
+        Paste a job description to compare listing keywords against your saved skills.
+      </p>
+    </div>
+  </header>
+
+  <section class="messages">
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </section>
+
+  <form class="analysis-form" (ngSubmit)="onSubmit()" #analysisForm="ngForm">
+    <div class="form-row">
+      <label for="jobDescriptionText">Job Description</label>
+      <textarea
+        id="jobDescriptionText"
+        name="jobDescriptionText"
+        rows="12"
+        [(ngModel)]="jobDescriptionText"
+        required
+        placeholder="Paste the full job description here">
+      </textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="loading || !analysisForm.form.valid">
+        {{ loading ? 'Analyzing...' : 'Analyze Keywords' }}
+      </button>
+    </div>
+  </form>
+
+  <section *ngIf="result" class="results-section">
+    <div class="summary-grid">
+      <article class="summary-card">
+        <h2>Total Keywords</h2>
+        <p>{{ result.totalKeywords }}</p>
+      </article>
+
+      <article class="summary-card">
+        <h2>Matched</h2>
+        <p>{{ result.matchedCount }}</p>
+      </article>
+
+      <article class="summary-card">
+        <h2>Missing</h2>
+        <p>{{ result.missingCount }}</p>
+      </article>
+    </div>
+
+    <div class="results-grid">
+      <section class="result-card">
+        <h2>Matched Keywords</h2>
+        <p *ngIf="result.matched.length === 0">No matched keywords found.</p>
+
+        <ul *ngIf="result.matched.length > 0" class="keyword-list">
+          <li *ngFor="let keyword of result.matched">
+            <strong>{{ keyword.keywordName }}</strong><br />
+            Category: {{ keyword.category }}<br />
+            Matched Alias: {{ keyword.matchedAlias }}
+          </li>
+        </ul>
+      </section>
+
+      <section class="result-card">
+        <h2>Missing Keywords</h2>
+        <p *ngIf="result.missing.length === 0">No missing keywords found.</p>
+
+        <ul *ngIf="result.missing.length > 0" class="keyword-list">
+          <li *ngFor="let keyword of result.missing">
+            <strong>{{ keyword.keywordName }}</strong><br />
+            Category: {{ keyword.category }}<br />
+            Matched Alias: {{ keyword.matchedAlias }}
+          </li>
+        </ul>
+      </section>
+    </div>
+  </section>
+</main>

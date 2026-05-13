@@ -1,0 +1,115 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.edit-skill-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.edit-skill-header {
+  margin-bottom: 16px;
+}
+
+.edit-skill-subtitle {
+  margin: 4px 0 0;
+  line-height: 1.5;
+  color: #475569;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 2rem;
+}
+
+.messages {
+  margin-bottom: 8px;
+}
+
+.success-message {
+  margin-bottom: 8px;
+  color: #166534;
+  font-weight: 600;
+}
+
+.error-message {
+  margin-bottom: 8px;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.edit-skill-form {
+  padding: 24px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.form-row {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font: inherit;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button[type='submit'] {
+  background-color: #1976d2;
+  color: #ffffff;
+}
+
+button[type='submit']:hover:not(:disabled) {
+  background-color: #125ea7;
+}
+
+button[type='button'] {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+button[type='button']:hover {
+  background-color: #d1d5db;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

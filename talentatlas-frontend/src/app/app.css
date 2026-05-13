@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+
+.top-nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.top-nav a:hover {
+  text-decoration: underline;
+}
+
+.page-shell {
+  min-height: calc(100vh - 65px);
+}

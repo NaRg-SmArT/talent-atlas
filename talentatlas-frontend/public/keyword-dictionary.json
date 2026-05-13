@@ -1,0 +1,452 @@
+[
+  {
+    "name": "Java",
+    "category": "Hard Skill",
+    "aliases": ["java"]
+  },
+  {
+    "name": "Spring",
+    "category": "Hard Skill",
+    "aliases": ["spring", "spring framework"]
+  },
+  {
+    "name": "Spring Boot",
+    "category": "Hard Skill",
+    "aliases": ["spring boot", "springboot"]
+  },
+  {
+    "name": "Angular",
+    "category": "Hard Skill",
+    "aliases": ["angular"]
+  },
+  {
+    "name": "TypeScript",
+    "category": "Hard Skill",
+    "aliases": ["typescript", "ts"]
+  },
+  {
+    "name": "JavaScript",
+    "category": "Hard Skill",
+    "aliases": ["javascript", "js", "ecmascript"]
+  },
+  {
+    "name": "HTML",
+    "category": "Hard Skill",
+    "aliases": ["html", "html5", "semantic html"]
+  },
+  {
+    "name": "CSS",
+    "category": "Hard Skill",
+    "aliases": ["css", "css3", "responsive design", "flexbox", "grid"]
+  },
+  {
+    "name": "SQL",
+    "category": "Hard Skill",
+    "aliases": ["sql"]
+  },
+  {
+    "name": "MySQL",
+    "category": "Hard Skill",
+    "aliases": ["mysql"]
+  },
+  {
+    "name": "PostgreSQL",
+    "category": "Hard Skill",
+    "aliases": ["postgresql", "postgres", "postgres sql"]
+  },
+  {
+    "name": "NoSQL Databases",
+    "category": "Hard Skill",
+    "aliases": [
+      "nosql",
+      "document database",
+      "document databases",
+      "key value store",
+      "key-value store"
+    ]
+  },
+  {
+    "name": "Relational Databases",
+    "category": "Hard Skill",
+    "aliases": ["relational database", "relational databases", "rdbms"]
+  },
+  {
+    "name": "REST APIs",
+    "category": "Hard Skill",
+    "aliases": [
+      "rest api",
+      "rest apis",
+      "restful api",
+      "restful apis",
+      "api development"
+    ]
+  },
+  {
+    "name": "JSON",
+    "category": "Hard Skill",
+    "aliases": ["json"]
+  },
+  {
+    "name": "Git",
+    "category": "Hard Skill",
+    "aliases": ["git", "version control"]
+  },
+  {
+    "name": "GitHub",
+    "category": "Hard Skill",
+    "aliases": ["github"]
+  },
+  {
+    "name": "JUnit",
+    "category": "Hard Skill",
+    "aliases": ["junit", "junit 5"]
+  },
+  {
+    "name": "Testing",
+    "category": "Hard Skill",
+    "aliases": [
+      "testing",
+      "unit testing",
+      "integration testing",
+      "test automation"
+    ]
+  },
+  {
+    "name": "Debugging",
+    "category": "Hard Skill",
+    "aliases": ["debugging", "troubleshooting", "bug fixing"]
+  },
+  {
+    "name": "Agile",
+    "category": "Hard Skill",
+    "aliases": ["agile", "scrum", "kanban"]
+  },
+  {
+    "name": "CI/CD",
+    "category": "Hard Skill",
+    "aliases": [
+      "ci/cd",
+      "continuous integration",
+      "continuous delivery",
+      "continuous deployment"
+    ]
+  },
+  {
+    "name": "DevOps Tooling",
+    "category": "Hard Skill",
+    "aliases": [
+      "devops",
+      "github actions",
+      "gitlab ci",
+      "jenkins",
+      "circleci"
+    ]
+  },
+  {
+    "name": "Cloud Platforms",
+    "category": "Hard Skill",
+    "aliases": [
+      "cloud platform",
+      "cloud platforms",
+      "cloud infrastructure",
+      "cloud services",
+      "aws",
+      "amazon web services",
+      "azure",
+      "microsoft azure",
+      "gcp",
+      "google cloud"
+    ]
+  },
+  {
+    "name": "Backend Development",
+    "category": "Hard Skill",
+    "aliases": [
+      "backend development",
+      "back-end development",
+      "server-side development",
+      "server side development",
+      "api backend"
+    ]
+  },
+  {
+    "name": "Microservices",
+    "category": "Hard Skill",
+    "aliases": ["microservices", "micro-service", "microservice architecture"]
+  },
+  {
+    "name": "React",
+    "category": "Hard Skill",
+    "aliases": ["react", "react.js", "reactjs"]
+  },
+  {
+    "name": "Python",
+    "category": "Hard Skill",
+    "aliases": ["python"]
+  },
+  {
+    "name": "C#",
+    "category": "Hard Skill",
+    "aliases": ["c#", ".net", "dotnet"]
+  },
+  {
+    "name": "C/C++",
+    "category": "Hard Skill",
+    "aliases": ["c/c++", "c++", "c language"]
+  },
+  {
+    "name": "WordPress",
+    "category": "Hard Skill",
+    "aliases": ["wordpress"]
+  },
+  {
+    "name": "Web Design",
+    "category": "Hard Skill",
+    "aliases": [
+      "web design",
+      "website design",
+      "ui design",
+      "visual design"
+    ]
+  },
+  {
+    "name": "User Experience",
+    "category": "Hard Skill",
+    "aliases": ["user experience", "ux", "ux design"]
+  },
+  {
+    "name": "User Interface",
+    "category": "Hard Skill",
+    "aliases": [
+      "ui",
+      "user interface",
+      "ui design",
+      "interface design"
+    ]
+  },
+  {
+    "name": "Typography",
+    "category": "Hard Skill",
+    "aliases": ["typography"]
+  },
+  {
+    "name": "Layout",
+    "category": "Hard Skill",
+    "aliases": ["layout", "page layout"]
+  },
+  {
+    "name": "Responsive Design",
+    "category": "Hard Skill",
+    "aliases": [
+      "responsive design",
+      "mobile friendly",
+      "mobile and desktop",
+      "works well on mobile and desktop"
+    ]
+  },
+  {
+    "name": "Cybersecurity",
+    "category": "Hard Skill",
+    "aliases": [
+      "cybersecurity",
+      "security protocols",
+      "security logs",
+      "vulnerabilities",
+      "security best practices"
+    ]
+  },
+  {
+    "name": "Data Privacy",
+    "category": "Hard Skill",
+    "aliases": [
+      "data privacy",
+      "hipaa",
+      "hipaa-compliant",
+      "patient data",
+      "privacy best practices"
+    ]
+  },
+  {
+    "name": "Automation",
+    "category": "Hard Skill",
+    "aliases": [
+      "automation",
+      "automated",
+      "automation tools",
+      "automation solutions"
+    ]
+  },
+  {
+    "name": "Machine Learning",
+    "category": "Hard Skill",
+    "aliases": [
+      "machine learning",
+      "ml",
+      "ml workflows",
+      "feature engineering",
+      "feature extraction",
+      "ml models"
+    ]
+  },
+  {
+    "name": "PyTorch",
+    "category": "Hard Skill",
+    "aliases": ["pytorch"]
+  },
+  {
+    "name": "TensorFlow",
+    "category": "Hard Skill",
+    "aliases": ["tensorflow"]
+  },
+  {
+    "name": "Embedded Systems",
+    "category": "Hard Skill",
+    "aliases": [
+      "embedded systems",
+      "embedded devices",
+      "embedded",
+      "real-time systems"
+    ]
+  },
+  {
+    "name": "Data Pipelines",
+    "category": "Hard Skill",
+    "aliases": [
+      "data pipelines",
+      "data pipeline",
+      "data ingestion",
+      "data processing workflows"
+    ]
+  },
+  {
+    "name": "MLOps",
+    "category": "Hard Skill",
+    "aliases": ["mlops"]
+  },
+  {
+    "name": "Documentation",
+    "category": "Hard Skill",
+    "aliases": [
+      "technical documentation",
+      "documented code",
+      "maintain documentation"
+    ]
+  },
+  {
+    "name": "Data Structures and Algorithms",
+    "category": "Hard Skill",
+    "aliases": [
+      "data structures",
+      "algorithms",
+      "dsa",
+      "algorithmic problem solving",
+      "algorithmic problem-solving"
+    ]
+  },
+  {
+    "name": "Communication",
+    "category": "Soft Skill",
+    "aliases": [
+      "communication",
+      "written communication",
+      "verbal communication",
+      "clear communication"
+    ]
+  },
+  {
+    "name": "Teamwork",
+    "category": "Soft Skill",
+    "aliases": [
+      "teamwork",
+      "collaboration",
+      "cross-functional collaboration",
+      "work with cross-functional teams"
+    ]
+  },
+  {
+    "name": "Problem Solving",
+    "category": "Soft Skill",
+    "aliases": [
+      "problem solving",
+      "problem-solving",
+      "analytical thinking",
+      "solve complex problems"
+    ]
+  },
+  {
+    "name": "Adaptability",
+    "category": "Soft Skill",
+    "aliases": [
+      "adaptability",
+      "adaptable",
+      "flexibility",
+      "flexible"
+    ]
+  },
+  {
+    "name": "Time Management",
+    "category": "Soft Skill",
+    "aliases": [
+      "time management",
+      "prioritization",
+      "prioritisation",
+      "manage time effectively"
+    ]
+  },
+  {
+    "name": "Attention to Detail",
+    "category": "Soft Skill",
+    "aliases": [
+      "attention to detail",
+      "strong attention to detail",
+      "detail-oriented",
+      "detail oriented",
+      "high attention to detail"
+    ]
+  },
+  {
+    "name": "Leadership",
+    "category": "Soft Skill",
+    "aliases": ["leadership", "mentoring", "ownership", "lead projects"]
+  },
+  {
+    "name": "Initiative",
+    "category": "Soft Skill",
+    "aliases": ["initiative", "self-starter", "proactive", "takes initiative"]
+  },
+  {
+    "name": "Organization",
+    "category": "Soft Skill",
+    "aliases": [
+      "organization",
+      "organised",
+      "organized",
+      "highly organized"
+    ]
+  },
+  {
+    "name": "Willingness to Learn",
+    "category": "Soft Skill",
+    "aliases": [
+      "willingness to learn",
+      "eagerness to learn",
+      "motivated to learn",
+      "learn new technologies"
+    ]
+  },
+  {
+    "name": "Reliability",
+    "category": "Soft Skill",
+    "aliases": ["reliability", "reliable", "dependable"]
+  },
+  {
+    "name": "Ownership",
+    "category": "Soft Skill",
+    "aliases": ["ownership", "takes ownership", "own projects", "end-to-end ownership"]
+  },
+  {
+    "name": "Independence",
+    "category": "Soft Skill",
+    "aliases": ["work independently", "self-directed", "minimal supervision"]
+  }
+]

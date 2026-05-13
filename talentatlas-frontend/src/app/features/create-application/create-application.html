@@ -1,0 +1,183 @@
+<app-nav></app-nav>
+
+<main class="create-application-page">
+  <header class="create-application-header">
+    <div>
+      <h1>Create New Application</h1>
+      <p class="create-application-subtitle">
+        Capture the key details for a role you are tracking.
+      </p>
+    </div>
+  </header>
+
+  <section class="messages">
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </section>
+
+  <form
+    #applicationForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    novalidate
+    class="create-application-form"
+  >
+    <div class="form-row">
+      <label for="companyName">Company Name</label>
+      <input
+        id="companyName"
+        name="companyName"
+        type="text"
+        [(ngModel)]="companyName"
+        #companyNameModel="ngModel"
+        required
+        maxlength="100"
+      />
+      <p class="error-message" *ngIf="companyNameModel.invalid && (companyNameModel.dirty || companyNameModel.touched)">
+        <span *ngIf="companyNameModel.errors?.['required']">Company name is required.</span>
+        <span *ngIf="companyNameModel.errors?.['maxlength']">Company name must be 100 characters or fewer.</span>
+      </p>
+      <p class="error-message" *ngIf="fieldErrors['companyName']">{{ fieldErrors['companyName'] }}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="positionTitle">Position Title</label>
+      <input
+        id="positionTitle"
+        name="positionTitle"
+        type="text"
+        [(ngModel)]="positionTitle"
+        #positionTitleModel="ngModel"
+        required
+        maxlength="100"
+      />
+      <p class="error-message" *ngIf="positionTitleModel.invalid && (positionTitleModel.dirty || positionTitleModel.touched)">
+        <span *ngIf="positionTitleModel.errors?.['required']">Position title is required.</span>
+        <span *ngIf="positionTitleModel.errors?.['maxlength']">Position title must be 100 characters or fewer.</span>
+      </p>
+      <p class="error-message" *ngIf="fieldErrors['positionTitle']">{{ fieldErrors['positionTitle'] }}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="jobPostingUrl">Job Posting URL</label>
+      <input
+        id="jobPostingUrl"
+        name="jobPostingUrl"
+        type="url"
+        [(ngModel)]="jobPostingUrl"
+        #jobPostingUrlModel="ngModel"
+        maxlength="500"
+      />
+      <p class="error-message" *ngIf="jobPostingUrlModel.errors?.['maxlength'] && (jobPostingUrlModel.dirty || jobPostingUrlModel.touched)">
+        Job posting URL must be 500 characters or fewer.
+      </p>
+      <p class="error-message" *ngIf="fieldErrors['jobPostingUrl']">{{ fieldErrors['jobPostingUrl'] }}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="primaryContactName">Primary Contact Name</label>
+      <input
+        id="primaryContactName"
+        name="primaryContactName"
+        type="text"
+        [(ngModel)]="primaryContactName"
+        #primaryContactNameModel="ngModel"
+        maxlength="100"
+      />
+      <p class="error-message" *ngIf="primaryContactNameModel.errors?.['maxlength'] && (primaryContactNameModel.dirty || primaryContactNameModel.touched)">
+        Primary contact name must be 100 characters or fewer.
+      </p>
+      <p class="error-message" *ngIf="fieldErrors['primaryContactName']">{{ fieldErrors['primaryContactName'] }}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="primaryContactPhone">Primary Contact Phone</label>
+      <input
+        id="primaryContactPhone"
+        name="primaryContactPhone"
+        type="text"
+        [(ngModel)]="primaryContactPhone"
+        #primaryContactPhoneModel="ngModel"
+        maxlength="30"
+      />
+      <p class="error-message" *ngIf="primaryContactPhoneModel.errors?.['maxlength'] && (primaryContactPhoneModel.dirty || primaryContactPhoneModel.touched)">
+        Primary contact phone must be 30 characters or fewer.
+      </p>
+      <p class="error-message" *ngIf="fieldErrors['primaryContactPhone']">{{ fieldErrors['primaryContactPhone'] }}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="primaryContactEmail">Primary Contact Email</label>
+      <input
+        id="primaryContactEmail"
+        name="primaryContactEmail"
+        type="email"
+        [(ngModel)]="primaryContactEmail"
+        #primaryContactEmailModel="ngModel"
+        email
+        maxlength="150"
+      />
+      <p class="error-message" *ngIf="primaryContactEmailModel.invalid && (primaryContactEmailModel.dirty || primaryContactEmailModel.touched)">
+        <span *ngIf="primaryContactEmailModel.errors?.['email']">Enter a valid email address.</span>
+        <span *ngIf="primaryContactEmailModel.errors?.['maxlength']">Primary contact email must be 150 characters or fewer.</span>
+      </p>
+      <p class="error-message" *ngIf="fieldErrors['primaryContactEmail']">{{ fieldErrors['primaryContactEmail'] }}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="status">Status</label>
+      <select id="status" name="status" [(ngModel)]="status" required>
+        <option value="SAVED">SAVED</option>
+        <option value="APPLIED">APPLIED</option>
+        <option value="WITHDRAWN">WITHDRAWN</option>
+        <option value="SCREENING">SCREENING</option>
+        <option value="INTERVIEW">INTERVIEW</option>
+        <option value="OFFER">OFFER</option>
+        <option value="ACCEPTED">ACCEPTED</option>
+        <option value="REJECTED">REJECTED</option>
+      </select>
+      <p class="error-message" *ngIf="fieldErrors['status']">{{ fieldErrors['status'] }}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="appliedAt">Applied Date</label>
+      <input
+        id="appliedAt"
+        name="appliedAt"
+        type="date"
+        [(ngModel)]="appliedAt"
+        #appliedAtModel="ngModel"
+        required
+      />
+      <p class="error-message" *ngIf="appliedAtModel.invalid && (appliedAtModel.dirty || appliedAtModel.touched)">
+        <span *ngIf="appliedAtModel.errors?.['required']">Applied date is required.</span>
+      </p>
+      <p class="error-message" *ngIf="fieldErrors['appliedAt']">{{ fieldErrors['appliedAt'] }}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="notes">Notes</label>
+      <textarea
+        id="notes"
+        name="notes"
+        rows="5"
+        [(ngModel)]="notes"
+        #notesModel="ngModel"
+        maxlength="2000"
+      ></textarea>
+      <p class="error-message" *ngIf="notesModel.errors?.['maxlength'] && (notesModel.dirty || notesModel.touched)">
+        Notes must be 2000 characters or fewer.
+      </p>
+      <p class="error-message" *ngIf="fieldErrors['notes']">{{ fieldErrors['notes'] }}</p>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="loading || !applicationForm.form.valid">
+        {{ loading ? 'Saving...' : 'Create Application' }}
+      </button>
+
+      <button type="button" routerLink="/applications">
+        Cancel
+      </button>
+    </div>
+  </form>
+</main>

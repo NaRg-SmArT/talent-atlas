@@ -1,0 +1,81 @@
+<app-nav></app-nav>
+
+<main class="edit-skill-page">
+  <header class="edit-skill-header">
+    <div>
+      <h1>Edit Skill</h1>
+      <p class="edit-skill-subtitle">
+        Update the name, category, or proficiency for this skill.
+      </p>
+    </div>
+  </header>
+
+  <section class="messages">
+    <p *ngIf="loading">Loading skill...</p>
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </section>
+
+  <form
+    *ngIf="!loading"
+    #skillForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    novalidate
+    class="edit-skill-form"
+  >
+    <div class="form-row">
+      <label for="name">Skill Name</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        [(ngModel)]="name"
+        required
+        maxlength="100"
+      />
+    </div>
+
+    <div class="form-row">
+        <label for="category">Category (Hard Skill or Soft Skill)</label>
+        <select
+          id="category"
+          name="category"
+          [(ngModel)]="category"
+          required
+        >
+          <option value="" disabled>Select a category</option>
+          <option value="Hard Skill">Hard Skill</option>
+          <option value="Soft Skill">Soft Skill</option>
+        </select>
+      </div>
+
+    <div class="form-row">
+      <label for="proficiency">Proficiency</label>
+      <select
+        id="proficiency"
+        name="proficiency"
+        [(ngModel)]="proficiency"
+        required
+      >
+        <option [ngValue]="1">1 - Beginner</option>
+        <option [ngValue]="2">2 - Basic</option>
+        <option [ngValue]="3">3 - Intermediate</option>
+        <option [ngValue]="4">4 - Advanced</option>
+        <option [ngValue]="5">5 - Expert</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        [disabled]="saving || !skillForm.form.valid"
+      >
+        {{ saving ? 'Saving...' : 'Save Changes' }}
+      </button>
+
+      <button type="button" routerLink="/skills">
+        Cancel
+      </button>
+    </div>
+  </form>
+</main>

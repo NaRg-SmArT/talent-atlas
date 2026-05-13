@@ -1,0 +1,21 @@
+<header class="app-header">
+  <div class="app-header-inner">
+    <a routerLink="/" class="brand">
+      <span class="brand-name">TalentAtlas</span>
+    </a>
+
+    <nav class="nav-links" *ngIf="!isLoggedIn">
+      <a routerLink="/login">Log In</a>
+      <a routerLink="/register">Create Account</a>
+    </nav>
+
+    <nav class="nav-links" *ngIf="isLoggedIn">
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/applications">Applications</a>
+      <a routerLink="/skills">Skills</a>
+      <a routerLink="/analysis">Keyword Analysis</a>
+      <button type="button" (click)="logout()">Logout</button>
+    </nav>
+  </div>
+</header>
+
